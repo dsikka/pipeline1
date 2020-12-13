@@ -49,7 +49,7 @@ Resources:
     Properties:
       FunctionName: upload-photos-2
       Handler: upload-photos.lambda_handler
-      Runtime: javascript
+      Runtime: nodejs12.x
       CodeUri: ./upload-photos.js
       Description: 'Lambda function to handle uploads'
       MemorySize: 128
