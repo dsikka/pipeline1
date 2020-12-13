@@ -12,7 +12,7 @@ bucket = 'index-photos'
 
 def lambda_handler(event, context):
     # TODO implement)
-    
+    print(event)
     photo_name = event['Records'][0]['s3']['object']['key']
     client=boto3.client('rekognition')
     response = client.detect_labels(Image={'S3Object':

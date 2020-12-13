@@ -60,7 +60,7 @@ def lambda_handler(event, context):
                 image_names.append(hit['_source']['objectKey'])
         
         image_names = list(set(image_names))
-        
+        print(image_names)
     response = {
         "dialogAction": {
             "type": "Close",
