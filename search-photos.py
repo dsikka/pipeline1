@@ -4,7 +4,7 @@ import boto3
 from aws_requests_auth.aws_auth import AWSRequestsAuth
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 
-print('TRYING TO MAKE AN EDIT')
+print('This is another random update')
 # TODO: Put everything in try/except
 def lambda_handler(event, context):
     current_data = event['currentIntent']['slots']
