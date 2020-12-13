@@ -30,3 +30,31 @@ Resources:
       Environment:
         Variables:
           REGION: us-east-1
+  Lambda3:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: get-photo-request-2
+      Handler: get-photo-request.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./get-photo-request.py
+      Description: 'Lambda function to handle queries'
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::645074619784:role/service-role/get-photo-request-role-x2ba4yt6'
+      Environment:
+        Variables:
+          REGION: us-east-1
+  Lambda4:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: upload-photos-2
+      Handler: upload-photos.lambda_handler
+      Runtime: javascript
+      CodeUri: ./upload-photos.js
+      Description: 'Lambda function to handle uploads'
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::645074619784:role/service-role/upload-photos-role-kyd8bvna'
+      Environment:
+        Variables:
+          REGION: us-east-1
