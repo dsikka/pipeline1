@@ -47,6 +47,9 @@ def lambda_handler(event, context):
             verify_certs=True,
             connection_class=RequestsHttpConnection 
         )
+        if kwA[-1] == 's':
+            kwA = kwA[-1]
+
         kwA_query = es.search(index = 'photos', body = {"from" : 0, "size" : 100, "query": { "match": { "labels":  kwA}}})
         all_hits  = kwA_query['hits']['hits']
         image_names = []
@@ -54,6 +57,8 @@ def lambda_handler(event, context):
             image_names.append(hit['_source']['objectKey'])
             
         if kwB is not None:
+            if kwB[-1] == 's':
+                kwB = kwB[-1]
             kwB_query = es.search(index = 'photos', body = {"from" : 0, "size" : 100, "query": { "match": { "labels":  kwB}}})
             qB_hits = kwB_query['hits']['hits']
             for hit in qB_hits:
