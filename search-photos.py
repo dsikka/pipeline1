@@ -53,8 +53,13 @@ def lambda_handler(event, context):
         kwA_query = es.search(index = 'photos', body = {"from" : 0, "size" : 100, "query": { "match": { "labels":  kwA}}})
         all_hits  = kwA_query['hits']['hits']
         image_names = []
-        for hit in all_hits:
-            image_names.append(hit['_source']['objectKey'])
+
+        if len(image_names) == 0:
+            kwA = kwA + 's'
+            kwA_query = es.search(index = 'photos', body = {"from" : 0, "size" : 100, "query": { "match": { "labels":  kwA}}})
+            all_hits  = kwA_query['hits']['hits']
+            for hit in all_hits:
+                image_names.append(hit['_source']['objectKey'])
             
         if kwB is not None:
             if kwB[-1] == 's':
@@ -63,6 +68,14 @@ def lambda_handler(event, context):
             qB_hits = kwB_query['hits']['hits']
             for hit in qB_hits:
                 image_names.append(hit['_source']['objectKey'])
+
+            if len(qB_hits) == 0:
+                kwB = kwB + 's'
+                kwB_query = es.search(index = 'photos', body = {"from" : 0, "size" : 100, "query": { "match": { "labels":  kwB}}})
+                qB_hits = kwB_query['hits']['hits']
+                for hit in qB_hits:
+                    image_names.append(hit['_source']['objectKey'])
+
         
         image_names = list(set(image_names))
         print(image_names)
