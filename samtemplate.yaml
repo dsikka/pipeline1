@@ -48,7 +48,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: upload-photos-2
-      Handler: index.lambda_handler
+      Handler: index.handler
       Runtime: nodejs12.x
       CodeUri: ./index.js
       Description: 'Lambda function to handle uploads'
