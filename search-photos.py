@@ -11,6 +11,7 @@ def lambda_handler(event, context):
     kwA = current_data['KeywordA']
     kwB = current_data['KeywordB']
     
+    
     if kwA is None and kwB is None:
         response = {
             "dialogAction": {
@@ -53,6 +54,8 @@ def lambda_handler(event, context):
         kwA_query = es.search(index = 'photos', body = {"from" : 0, "size" : 100, "query": { "match": { "labels":  kwA}}})
         all_hits  = kwA_query['hits']['hits']
         image_names = []
+        for hit in all_hits:
+            image_names.append(hit['_source']['objectKey'])
 
         if len(image_names) == 0:
             kwA = kwA + 's'
