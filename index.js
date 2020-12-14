@@ -6,7 +6,7 @@ const URL_EXPIRATION_SECONDS = 300
 
 // Main Lambda entry point
 exports.handler = async (event) => {
-  console.log("wassupppp",event)
+  console.log("here",event)
   return await getUploadURL(event)
 }
 

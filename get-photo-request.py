@@ -7,6 +7,7 @@ def lambda_handler(event, context):
     client = boto3.client('lex-runtime')
 
     input = event["queryStringParameters"]["query_string"]
+    print('here')
     print(input)
     response = client.post_text(
         botName = 'search_bot',

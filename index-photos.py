@@ -8,6 +8,7 @@ from aws_requests_auth.aws_auth import AWSRequestsAuth
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 
 bucket = 'index-photos'
+print('here')
 #photo_name = 'dog.jpg'
 
 def lambda_handler(event, context):
